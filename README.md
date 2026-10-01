@@ -63,7 +63,7 @@ build/app/outputs/flutter-apk/app-release.apk
 ## Estrutura inicial
 
 ```text
-love_mo vie/
+love_movie/
 ├── android/
 ├── lib/
 │   └── main.dart
