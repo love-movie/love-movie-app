@@ -75,4 +75,4 @@ love_movie/
 
 ## Documentação
 
-- [Setup técnico do ambiente Flutter e Android](SETUP_AMBIENTE_FLUTTER.md)
+- [Setup técnico do ambiente Flutter e Android](docs/SETUP_AMBIENTE_FLUTTER.md)
