@@ -19,4 +19,20 @@ class MovieService {
 
     return jsonList.map((item) => Movie.fromJson(item)).toList();
   }
+
+  Future<Movie> getMovieById(int movieId) async {
+    // chama a API para obter os detalhes de um filme específico pelo ID
+    final response = await http.get(
+      Uri.parse('${ApiConstants.baseUrl}/movies/$movieId'),
+    );
+
+    // verifica se a resposta da API foi bem-sucedida
+    if (response.statusCode != 200) {
+      throw Exception('Erro ao carregar filme');
+    }
+
+    final json = jsonDecode(response.body);
+
+    return Movie.fromJson(json);
+  }
 }

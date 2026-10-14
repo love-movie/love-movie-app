@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'movie_details_screen.dart';
 import '../models/movie.dart';
 import '../services/movie_service.dart';
 
@@ -50,8 +51,17 @@ class _MoviesScreenState extends State<MoviesScreen> {
                 title: Text(movie.title),
 
                 subtitle: Text(movie.year.toString()),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MovieDetailsScreen(movieId: movie.id),
+                    ),
+                  );
+                },
               );
             },
+            // onTap is not a property of ListView.builder, it should be handled inside the ListTile
           );
         },
       ),
