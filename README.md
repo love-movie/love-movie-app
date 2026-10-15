@@ -73,6 +73,37 @@ love_movie/
 └── SETUP_AMBIENTE_FLUTTER.md
 ```
 
+## Localização
+Este frontend tem localização para pt-BR e en-US. Os arquivos que possuem as 
+chaves de tradução são [`lib/l10n/app_pt.arb`](lib/l10n/app_pt.arb) e
+[`lib/l10n/app_pt.arb`](lib/l10n/app_pt.arb). O arquivo padrão é o 
+[`lib/l10n/app_en.arb`](lib/l10n/app_en.arb). Para utilizar uma entrada de texto localizada no front-end:
+
+1) crie a entrada nestes 2 arquivos. Exemplo:
+
+```text
+# arquivo lib/l10n/app_pt.arb
+{
+    (...)
+    "originalLanguage": "Idioma original",
+    (...)
+}
+
+---
+
+# arquivo lib/l10n/app_en.arb
+{
+    (...)
+    "originalLanguage": "Original Language",
+    (...)
+}
+```
+
+2) execute ```flutter gen-l10n``` na raiz da aplicação e ele 
+\[re\]gerará os arquivos [`lib/l10n/app_localizations_pt.dart`](lib/l10n/app_localizations_pt.dart), 
+[`lib/l10n/app_localizations_en.dart`](lib/l10n/app_localizations_en.dart) e 
+[`lib/l10n/app_localizations.dart`](lib/l10n/app_localizations.dart) 
+
 ## Documentação
 
 - [Setup técnico do ambiente Flutter e Android](docs/SETUP_AMBIENTE_FLUTTER.md)

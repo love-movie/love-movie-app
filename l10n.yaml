@@ -1,0 +1,9 @@
+# especifica o diretório onde os arquivos ARB (Application Resource Bundle) 
+# estão localizados.
+arb-dir: lib/l10n
+
+# define qual arquivo ARB será usado como modelo para gerar as localizações.
+template-arb-file: app_pt.arb
+
+# define o nome do arquivo Dart que será gerado contendo as localizações.
+output-localization-file: app_localizations.dart

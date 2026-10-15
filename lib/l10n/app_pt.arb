@@ -1,0 +1,11 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Love Movie",
+  "settings": "Configurações",
+  "language": "Idioma",
+  "save": "Salvar",
+  "movieDetails": "Detalhes do filme",
+  "originalLanguage": "Idioma original",
+  "genres": "Gêneros",
+  "errorLoadingMovies": "Não foi possível carregar os filmes.{error}"
+}

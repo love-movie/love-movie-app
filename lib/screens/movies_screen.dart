@@ -5,6 +5,8 @@ import 'settings_screen.dart';
 import '../models/movie.dart';
 import '../services/movie_service.dart';
 
+import 'package:love_movie_app/l10n/app_localizations.dart';
+
 class MoviesScreen extends StatefulWidget {
   const MoviesScreen({super.key});
 
@@ -14,7 +16,6 @@ class MoviesScreen extends StatefulWidget {
 
 class _MoviesScreenState extends State<MoviesScreen> {
   final MovieService _service = MovieService();
-
   late Future<List<Movie>> _futureMovies;
 
   @override
@@ -26,17 +27,18 @@ class _MoviesScreenState extends State<MoviesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       // barra de navegação superior (AppBar)
       appBar: AppBar(
         // título da AppBar
-        title: const Text('Love Movie'),
+        title: Text(l10n.appTitle),
 
         // ações da AppBar
         actions: [
           // botão de configurações
           IconButton(
-            tooltip: 'Configurações',
+            tooltip: l10n.settings,
             icon: const Icon(Icons.settings),
 
             // tratador do evento de press
@@ -88,8 +90,7 @@ class _MoviesScreenState extends State<MoviesScreen> {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Não foi possível carregar os filmes.\n'
-                      '${snapshot.error}',
+                      l10n.errorLoadingMovies('\n${snapshot.error}'),
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 24),

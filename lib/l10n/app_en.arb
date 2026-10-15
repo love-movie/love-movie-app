@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appTitle": "Love Movie",
+  "settings": "Settings",
+  "language": "Language",
+  "save": "Save",
+  "movieDetails": "Movie Details",
+  "originalLanguage": "Original Language",
+  "genres": "Genres",
+  "errorLoadingMovies": "Failed to load movies.{error}"
+}
