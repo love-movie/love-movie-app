@@ -101,7 +101,7 @@ abstract class AppLocalizations {
   /// No description provided for @appTitle.
   ///
   /// In pt, this message translates to:
-  /// **'Love Movie'**
+  /// **'Love Movie (pt)'**
   String get appTitle;
 
   /// No description provided for @settings.
@@ -122,11 +122,59 @@ abstract class AppLocalizations {
   /// **'Salvar'**
   String get save;
 
+  /// No description provided for @saveInProgress.
+  ///
+  /// In pt, this message translates to:
+  /// **'Salvando...'**
+  String get saveInProgress;
+
+  /// No description provided for @retry.
+  ///
+  /// In pt, this message translates to:
+  /// **'Tentar novamente'**
+  String get retry;
+
+  /// No description provided for @selectLanguage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Selecione um idioma.'**
+  String get selectLanguage;
+
+  /// No description provided for @chooseLanguage.
+  ///
+  /// In pt, this message translates to:
+  /// **'Escolha o idioma utilizado em toda a aplicação.'**
+  String get chooseLanguage;
+
+  /// No description provided for @languageUpdated.
+  ///
+  /// In pt, this message translates to:
+  /// **'Idioma atualizado com sucesso.'**
+  String get languageUpdated;
+
+  /// No description provided for @settingsLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar as configurações.\n{error}'**
+  String settingsLoadError(Object error);
+
+  /// No description provided for @languageUpdateError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível atualizar o idioma.\n{error}'**
+  String languageUpdateError(Object error);
+
   /// No description provided for @movieDetails.
   ///
   /// In pt, this message translates to:
   /// **'Detalhes do filme'**
   String get movieDetails;
+
+  /// No description provided for @year.
+  ///
+  /// In pt, this message translates to:
+  /// **'Ano'**
+  String get year;
 
   /// No description provided for @originalLanguage.
   ///
@@ -139,6 +187,24 @@ abstract class AppLocalizations {
   /// In pt, this message translates to:
   /// **'Gêneros'**
   String get genres;
+
+  /// No description provided for @movieLoadError.
+  ///
+  /// In pt, this message translates to:
+  /// **'Não foi possível carregar o filme.\n{error}'**
+  String movieLoadError(Object error);
+
+  /// No description provided for @movieNotFound.
+  ///
+  /// In pt, this message translates to:
+  /// **'Filme não encontrado.'**
+  String get movieNotFound;
+
+  /// No description provided for @noGenres.
+  ///
+  /// In pt, this message translates to:
+  /// **'Nenhum gênero informado.'**
+  String get noGenres;
 
   /// No description provided for @errorLoadingMovies.
   ///

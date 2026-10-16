@@ -27,6 +27,8 @@ class _MoviesScreenState extends State<MoviesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint('[MoviesScreen] build called');
+    debugPrint('Context $context');
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       // barra de navegação superior (AppBar)

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:love_movie_app/l10n/app_localizations.dart';
+import 'package:love_movie_app/main.dart';
 
 import '../models/language.dart';
 import '../services/language_service.dart';
@@ -82,7 +84,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       }
 
       setState(() {
-        _errorMessage = 'Não foi possível carregar as configurações.\n$error';
+        final l10n = AppLocalizations.of(context)!;
+        _errorMessage = l10n.settingsLoadError(error);
 
         _isLoading = false;
       });
@@ -90,6 +93,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Future<void> _saveSettings() async {
+    final l10n = AppLocalizations.of(context)!;
     debugPrint(
       '[SettingsScreen] salvando idioma '
       '$_selectedLanguageCode',
@@ -99,7 +103,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     if (selectedLanguageCode == null) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Selecione um idioma.')));
+          .showSnackBar(SnackBar(content: Text(l10n.selectLanguage)));
 
       return;
     }
@@ -116,18 +120,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
         return;
       }
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Idioma atualizado com sucesso.')),
-      );
+      final l10n = AppLocalizations.of(context)!;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(l10n.languageUpdated)));
 
+      LoveMovieApp.of(context)?.setLocaleFromLanguageCode(selectedLanguageCode);
       Navigator.pop(context, true);
     } catch (error) {
       if (!mounted) {
         return;
       }
 
+      final l10n = AppLocalizations.of(context)!;
       setState(() {
-        _errorMessage = 'Não foi possível atualizar o idioma.\n$error';
+        _errorMessage = l10n.languageUpdateError(error);
 
         _isSaving = false;
       });
@@ -136,13 +142,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: const Text('Configurações')),
+      appBar: AppBar(title: Text(l10n.settings)),
       body: _buildBody(),
     );
   }
 
   Widget _buildBody() {
+    final l10n = AppLocalizations.of(context)!;
     if (_isLoading) {
       return const Center(child: CircularProgressIndicator());
     }
@@ -157,7 +165,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Idioma',
+            l10n.language,
             style: Theme.of(context).textTheme.titleLarge
                 ?.copyWith(fontWeight: FontWeight.bold),
           ),
@@ -165,8 +173,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const SizedBox(height: 8),
 
           Text(
-            'Escolha o idioma utilizado para exibir '
-            'os títulos e os gêneros dos filmes.',
+            l10n.chooseLanguage,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
 
@@ -174,10 +181,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
           DropdownButtonFormField<String>(
             initialValue: _selectedLanguageCode,
-            decoration: const InputDecoration(
-              labelText: 'Idioma',
-              border: OutlineInputBorder(),
-              prefixIcon: Icon(Icons.language),
+            decoration: InputDecoration(
+              labelText: l10n.language,
+              border: const OutlineInputBorder(),
+              prefixIcon: const Icon(Icons.language),
             ),
             items: _languages.map((language) {
               return DropdownMenuItem<String>(
@@ -215,7 +222,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: CircularProgressIndicator(strokeWidth: 2),
                     )
                   : const Icon(Icons.save),
-              label: Text(_isSaving ? 'Salvando...' : 'Salvar'),
+              label: Text(_isSaving ? l10n.saveInProgress : l10n.save),
             ),
           ),
         ],
@@ -224,6 +231,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget _buildLoadingError() {
+    final l10n = AppLocalizations.of(context)!;
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(24),
@@ -245,7 +254,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             OutlinedButton.icon(
               onPressed: _loadSettings,
               icon: const Icon(Icons.refresh),
-              label: const Text('Tentar novamente'),
+              label: Text(l10n.retry),
             ),
           ],
         ),

@@ -1,11 +1,22 @@
 {
   "@@locale": "pt",
-  "appTitle": "Love Movie",
+  "appTitle": "Love Movie (pt)",
   "settings": "Configurações",
   "language": "Idioma",
   "save": "Salvar",
+  "saveInProgress": "Salvando...",
+  "retry": "Tentar novamente",
+  "selectLanguage": "Selecione um idioma.",
+  "chooseLanguage": "Escolha o idioma utilizado em toda a aplicação.",
+  "languageUpdated": "Idioma atualizado com sucesso.",
+  "settingsLoadError": "Não foi possível carregar as configurações.\n{error}",
+  "languageUpdateError": "Não foi possível atualizar o idioma.\n{error}",
   "movieDetails": "Detalhes do filme",
+  "year": "Ano",
   "originalLanguage": "Idioma original",
   "genres": "Gêneros",
+  "movieLoadError": "Não foi possível carregar o filme.\n{error}",
+  "movieNotFound": "Filme não encontrado.",
+  "noGenres": "Nenhum gênero informado.",
   "errorLoadingMovies": "Não foi possível carregar os filmes.{error}"
 }

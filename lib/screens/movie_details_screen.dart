@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:love_movie_app/l10n/app_localizations.dart';
 
 import '../models/movie.dart';
 import '../services/movie_service.dart';
@@ -28,8 +29,10 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Detalhes do filme')),
+      appBar: AppBar(title: Text(l10n.movieDetails)),
       body: FutureBuilder<Movie>(
         future: _futureMovie,
         builder: (context, snapshot) {
@@ -42,8 +45,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Text(
-                  'Não foi possível carregar o filme.\n'
-                  '${snapshot.error}',
+                  l10n.movieLoadError(snapshot.error ?? ''),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -51,7 +53,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           }
 
           if (!snapshot.hasData) {
-            return const Center(child: Text('Filme não encontrado.'));
+            return Center(child: Text(l10n.movieNotFound));
           }
 
           final movie = snapshot.data!;
@@ -69,19 +71,19 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
                 const SizedBox(height: 24),
 
-                _InformationRow(label: 'Ano', value: movie.year.toString()),
+                _InformationRow(label: l10n.year, value: movie.year.toString()),
 
                 const SizedBox(height: 12),
 
                 _InformationRow(
-                  label: 'Idioma original',
+                  label: l10n.originalLanguage,
                   value: movie.originalLanguageCode,
                 ),
 
                 const SizedBox(height: 24),
 
                 Text(
-                  'Gêneros',
+                  l10n.genres,
                   style: Theme.of(context).textTheme.titleMedium
                       ?.copyWith(fontWeight: FontWeight.bold),
                 ),
@@ -89,7 +91,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                 const SizedBox(height: 12),
 
                 if (movie.genres.isEmpty)
-                  const Text('Nenhum gênero informado.')
+                  Text(l10n.noGenres)
                 else
                   Wrap(
                     spacing: 8,
